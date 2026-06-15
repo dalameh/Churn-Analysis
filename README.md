@@ -18,8 +18,9 @@ The pipeline utilizes specialized libraries for probabilistic modeling, data pro
 ### Phase II: Data ETL & Comprehensive Cleaning
 Processes multi-year transaction data from an Excel database to enforce strict structural integrity:
 * **Heterogeneous Merging:** Combines individual sheets into a single core dataframe consisting of `1,067,371` rows across columns: `Invoice`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `Price`, `Customer ID`, and `Country`.
-* **Data Quality & Integrity Audit:** * **Missing Value Dropping:** Filters out `22.77%` of anonymous rows lacking a `Customer ID` to avoid skewing individual customer models.
-* **Revenue Integrity Filtration:** Strips out transactions with $Quantity \le 0$ (returns/cancellations, including invoice prefix 'C') and $Price \le 0$ (errors/free items).
+* **Data Quality & Integrity Audit:**
+  * **Missing Value Dropping:** Filters out `22.77%` of anonymous rows lacking a `Customer ID` to avoid skewing individual customer models.
+  * **Revenue Integrity Filtration:** Strips out transactions with $Quantity \le 0$ (returns/cancellations, including invoice prefix 'C') and $Price \le 0$ (errors/free items).
 
 ### Phase III: Probabilistic Modeling ($P_{Alive}$ & CLV)
 Differentiates between a customer's natural purchase gap and high-risk structural churn using advanced non-contractual statistical models:
